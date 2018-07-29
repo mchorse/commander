@@ -11,13 +11,13 @@ import net.minecraft.server.MinecraftServer;
 public class CommandForin extends CommandBase
 {
     @Override
-    public String getCommandName()
+    public String getName()
     {
         return "forin";
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender)
+    public String getUsage(ICommandSender sender)
     {
         return "commander.forin.help";
     }
@@ -27,7 +27,7 @@ public class CommandForin extends CommandBase
     {
         if (args.length < 3)
         {
-            throw new WrongUsageException(this.getCommandUsage(sender));
+            throw new WrongUsageException(this.getUsage(sender));
         }
 
         int start = CommandBase.parseInt(args[0]);
