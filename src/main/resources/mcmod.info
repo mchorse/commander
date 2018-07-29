@@ -1,0 +1,13 @@
+[
+    {
+        "modid": "commander",
+        "name": "Commander",
+        "description": "Advanced command usage",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://minecraft.curseforge.com/projects/commander",
+        "updateJSON": "https://raw.githubusercontent.com/mchorse/commander/master/version.json",
+        "authorList": ["mchorse"],
+        "credits": ""
+    }
+]

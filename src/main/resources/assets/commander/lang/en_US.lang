@@ -1,0 +1,3 @@
+#PARSE_ESCAPES
+commander.forin.help=/forin <start> <end> <command...>
+commander.error.zero=<start> and <end> arguments can't be the same number

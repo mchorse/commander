@@ -1,0 +1,60 @@
+buildscript 
+{
+    repositories 
+    {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    
+    dependencies 
+    {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'org.yaml:snakeyaml:1.18'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+group = "mchorse.commander"
+archivesBaseName = "commander"
+sourceCompatibility = targetCompatibility = "1.8"
+
+compileJava 
+{
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+/* Minecraft configuration */
+
+minecraft 
+{
+    version = "${mc_version}-${forge_version}"
+    runDir = "run"
+    mappings = snapshot
+    
+    clientJvmArgs = ["-Xmx1G"]
+    serverJvmArgs = ["-Xmx1G"]
+    
+    replace "@VERSION@", project.version
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+	project.version += "-" + project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
