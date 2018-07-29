@@ -1,4 +1,6 @@
-[Planet Minecraft page]() – [Minecraft Forum thread]() – [CurseForge page](https://minecraft.curseforge.com/projects/commander) – [Source code](https://github.com/mchorse/commander) 
+![Commander](https://i.imgur.com/IFxwMOd.png)
+
+[Planet Minecraft page](http://www.planetminecraft.com/mod/blockbuster-machinima-mod/) – [Minecraft Forum thread](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2700216-blockbuster-machinima-studio-mod) – [CurseForge page](https://minecraft.curseforge.com/projects/commander) – [Source code](https://github.com/mchorse/commander) 
 
 **Commander** is a Minecraft mod which allows enhances command usage experience. Currently, this mods adds only one command to execute commands in a loop. 
 
@@ -45,11 +47,7 @@ When reposting my mod on your own website or reviewing it, please consider follo
 * By uploading a custom build of this mod, the build becomes your responsibility.
 * Provide the source link, please. [CurseForge](https://minecraft.curseforge.com/projects/commander) page is preferable.
 * Provide a link to my [YouTube channel](https://www.youtube.com/channel/UCWVDjAcecHHa8UrEWMRGI8w), please. This will be really appreciated! 
-* You can use Commander [banner](
-Notice: Undefined index: banner in C:\Users\Edgar and Jenya\Documents\minecraft\reads\templates\terms.php on line 10
-) or [cover](
-Notice: Undefined index: cover in C:\Users\Edgar and Jenya\Documents\minecraft\reads\templates\terms.php on line 10
-) for your repost page. Don't apply the watermark, though, that's just rude.
+* You can use Commander [banner](https://i.imgur.com/IFxwMOd.png) or [cover](https://i.imgur.com/rzHbVzC.png) for your repost page. Don't apply the watermark, though, that's just rude.
 
 If you're interested in this project, you might as well follow me on any of social media accounts listed below:
 
