@@ -1,13 +1,13 @@
 {
     "homepage": "https://minecraft.curseforge.com/projects/commander",
     "1.10.2": {
-        
+        "1.0": "Initial release of Commander adds very basic features."
     },
     "1.11.2": {
-        
+        "1.0": "Initial release of Commander adds very basic features."
     },
     "1.12.2": {
-        
+        "1.0": "Initial release of Commander adds very basic features."
     },
     "promos": {
         "1.10.2-latest": "1.0",
