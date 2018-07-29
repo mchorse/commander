@@ -70,7 +70,7 @@ public class CommandHandler
             super(regex);
 
             this.builder = builder;
-            this.formater = new DecimalFormat("0.#");
+            this.formater = new DecimalFormat("0.######");
         }
 
         @Override
