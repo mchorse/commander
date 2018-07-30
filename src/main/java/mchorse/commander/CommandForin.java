@@ -23,6 +23,12 @@ public class CommandForin extends CommandBase
     }
 
     @Override
+    public int getRequiredPermissionLevel()
+    {
+        return 2;
+    }
+
+    @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
     {
         if (args.length < 3)
@@ -41,15 +47,23 @@ public class CommandForin extends CommandBase
             throw new CommandException("commander.error.zero", start, end);
         }
 
+        CommandHandler handler = Commander.handler;
+
+        handler.setVariable("c", Math.abs(step) + 1);
+        handler.setVariable("s", start);
+        handler.setVariable("x", sender.getPosition().getX());
+        handler.setVariable("y", sender.getPosition().getY());
+        handler.setVariable("z", sender.getPosition().getZ());
+
         step /= Math.abs(step);
 
         for (; start != end + step; start += step)
         {
-            Commander.handler.setVariable("i", start);
+            handler.setVariable("i", start);
 
             server.getCommandManager().executeCommand(sender, command);
         }
 
-        Commander.handler.unsetVariable("i");
+        handler.unsetVariable("i", "c", "s", "x", "y", "z");
     }
 }
