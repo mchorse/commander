@@ -10,6 +10,8 @@ import net.minecraft.server.MinecraftServer;
 
 public class CommandForin extends CommandBase
 {
+    public int index;
+
     @Override
     public String getName()
     {
@@ -36,6 +38,12 @@ public class CommandForin extends CommandBase
             throw new WrongUsageException(this.getUsage(sender));
         }
 
+        /* What do you think you're doing... */
+        if (this.index > 3)
+        {
+            return;
+        }
+
         int start = CommandBase.parseInt(args[0]);
         int end = CommandBase.parseInt(args[1]);
         String command = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
@@ -49,21 +57,43 @@ public class CommandForin extends CommandBase
 
         CommandHandler handler = Commander.handler;
 
-        handler.setVariable("c", Math.abs(step) + 1);
-        handler.setVariable("s", start);
         handler.setVariable("x", sender.getPosition().getX());
         handler.setVariable("y", sender.getPosition().getY());
         handler.setVariable("z", sender.getPosition().getZ());
 
+        this.index++;
         step /= Math.abs(step);
+
+        String index = this.getIndexName();
+
+        handler.setVariable(index + "_c", Math.abs(step) + 1);
+        handler.setVariable(index + "_s", start);
 
         for (; start != end + step; start += step)
         {
-            handler.setVariable("i", start);
+            handler.setVariable(index, start);
 
             server.getCommandManager().executeCommand(sender, command);
         }
 
-        handler.unsetVariable("i", "c", "s", "x", "y", "z");
+        this.index--;
+        handler.unsetVariable(index, index + "_c", index + "_s", "x", "y", "z");
+    }
+
+    /**
+     * Get index variable name based on current index 
+     */
+    private String getIndexName()
+    {
+        if (this.index == 1)
+        {
+            return "i";
+        }
+        else if (this.index == 2)
+        {
+            return "j";
+        }
+
+        return "k";
     }
 }
