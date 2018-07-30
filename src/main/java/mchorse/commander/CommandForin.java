@@ -62,12 +62,12 @@ public class CommandForin extends CommandBase
         handler.setVariable("z", sender.getPosition().getZ());
 
         this.index++;
-        step /= Math.abs(step);
 
         String index = this.getIndexName();
 
         handler.setVariable(index + "_c", Math.abs(step) + 1);
         handler.setVariable(index + "_s", start);
+        step /= Math.abs(step);
 
         for (; start != end + step; start += step)
         {
