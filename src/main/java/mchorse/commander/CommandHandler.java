@@ -29,14 +29,26 @@ public class CommandHandler
         this.rewriter = new SubRewriter("@\\{([^\\}]+)\\}", this.maths);
     }
 
-    public void setVariable(String string, int start)
+    public void setVariable(String string, double value)
     {
-        this.maths.register(new Variable(string, start));
+        Variable var = (Variable) this.maths.variables.get(string);
+
+        if (var == null)
+        {
+            this.maths.register(new Variable(string, value));
+        }
+        else
+        {
+            var.set(value);
+        }
     }
 
-    public void unsetVariable(String string)
+    public void unsetVariable(String... string)
     {
-        this.maths.variables.remove(string);
+        for (String s : string)
+        {
+            this.maths.variables.remove(s);
+        }
     }
 
     @SubscribeEvent
