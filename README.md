@@ -4,6 +4,8 @@
 
 **Commander** is a Minecraft mod which allows enhances command usage experience. Currently, this mods adds only one command to execute commands in a loop. 
 
+I don't recommend using this mod on a server, since it's very easy to get the server lag, freeze or crash with the loop command. **If you're going to use it on the public server, use it at your own risk**.
+
 ## Install
 
 Install [Minecraft Forge](http://files.minecraftforge.net/), download the latest stable version of jar file for available minecraft version. Put it in minecraft's `mods` folder, and launch the game.
@@ -16,7 +18,7 @@ At the moment, commander provides `/forin` command which allows executing comman
 
     /forin <start> <end> <command>
 
-Where `<start>` is first index, and `<end>` is the value that you want `/forin` to iterate between. Both of those arguments must be integers, and the step value is `1`.
+Where `<start>` is first index, and `<end>` is the value that you want `/forin` to iterate between. Both of those arguments must be integers, and the step value is `1`. Also, you can nest `/forin` command only **three** times.
 
 `<command>` argument can be any valid commands, however, besides that, `<command>` accepts variables through `@{...}` construction. For example, if you want to spawn 5 creepers in a row across X axis, you can use this `/forin` like this:
 
@@ -32,11 +34,30 @@ This command will evaluate into this:
     /summon Creeper ~3 ~ ~
     /summon Creeper ~4 ~ ~
 
-As you can see, `@{i}` construction was replaced with the index. `i` is the value of the index. Besides supporting index variable, you can also use mathematical expressions within `@{...}` construct. For example, if you want to spawn 10 creepers around you in the circle (within `10` block radius), you can use this command:
+As you can see, `@{i}` construction was replaced with the index. Within `@{...}` following variables are present when using `/forin` command:
 
-    /forin 0 9 summon Creeper ~@{cos(i/10*PI*2)*10} ~ ~@{sin(i/10*PI*2)*10}
+|Name|Description|
+|-|-|
+|`i`|Index of the `/forin` loop|
+|`j`|Index of the `/forin` loop (second nesting)|
+|`k`|Index of the `/forin` loop (third nesting)|
+|`i_c`, `j_c` and `k_c`|Count of iteration for given iteration|
+|`i_s`, `j_s` and `k_s`|`<start>` index you passed into `/forin` command for given iteration|
+|`x`|X coordinate of command sender in the world|
+|`y`|Y coordinate of command sender in the world|
+|`z`|Z coordinate of command sender in the world|
+
+Besides supporting variables, you can also use mathematical expressions within `@{...}` construct. For example, if you want to spawn 10 creepers around you in the circle (within `10` block radius), you can use this command:
+
+    /forin 0 9 summon Creeper ~@{cos(i/i_c*PI*2)*10} ~ ~@{sin(i/i_c*PI*2)*10}
 
 See [this page](https://github.com/mchorse/aperture/wiki/Math-Expressions) for more information.
+
+## Video
+
+Here is also a short showcase video of some of the usages of this mod:
+
+<a href="https://youtu.be/R_Nnu-iLj1c"><img src="https://img.youtube.com/vi/R_Nnu-iLj1c/0.jpg"></a> 
 
 ## For mod reviewers and reposters
 
