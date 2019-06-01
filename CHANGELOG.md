@@ -1,4 +1,11 @@
-# Commander change Log
+# Commander Change Log
+
+## Version 1.0.1
+
+Second update of Commander mod. This update now makes Commander mod depend upon McLib (version 1.0.2) mod, and also adds multiple commands in line parsing.
+
+* Added multiple command parsin in one line using `||` construct
+* Added `mclib` 1.0.2 as a dependency (which in turns allow to use same math builder system as in McLib which has more functions)
 
 ## Version 1.0
 

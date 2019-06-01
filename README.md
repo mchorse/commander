@@ -1,6 +1,6 @@
 ![Commander](https://i.imgur.com/IFxwMOd.png)
 
-[Planet Minecraft page](http://www.planetminecraft.com/mod/blockbuster-machinima-mod/) – [Minecraft Forum thread](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2700216-blockbuster-machinima-studio-mod) – [CurseForge page](https://minecraft.curseforge.com/projects/commander) – [Source code](https://github.com/mchorse/commander) 
+[Planet Minecraft page](http://www.planetminecraft.com/mod/blockbuster-machinima-mod/) – [CurseForge page](https://minecraft.curseforge.com/projects/commander) – [Source code](https://github.com/mchorse/commander) 
 
 **Commander** is a Minecraft mod which allows enhances command usage experience. Currently, this mods adds only one command to execute commands in a loop. 
 
@@ -51,7 +51,11 @@ Besides supporting variables, you can also use mathematical expressions within `
 
     /forin 0 9 summon Creeper ~@{cos(i/i_c*PI*2)*10} ~ ~@{sin(i/i_c*PI*2)*10}
 
-See [this page](https://github.com/mchorse/aperture/wiki/Math-Expressions) for more information.
+See [this page](https://github.com/mchorse/aperture/wiki/Math-Expressions) for more information. 
+
+And finally, Commander mod supports multiple commands executed in one line by separating commands using `||` symbols:
+
+    /particle explode ~ ~ ~ 0.1 0.1 0.1 0.1 10 || setblock ~ ~ ~ minecraft:stone
 
 ## Video
 
@@ -72,7 +76,11 @@ When reposting my mod on your own website or reviewing it, please consider follo
 
 If you're interested in this project, you might as well follow me on any of social media accounts listed below:
 
-[![YouTube](http://i.imgur.com/yA4qam9.png)](https://www.youtube.com/channel/UCWVDjAcecHHa8UrEWMRGI8w) [![Discord](http://i.imgur.com/gI6JEpJ.png)](https://discord.gg/qfxrqUF) [![Twitter](http://i.imgur.com/6b8vHcX.png)](https://twitter.com/McHorsy) [![GitHub](http://i.imgur.com/DmTn1f1.png)](https://github.com/mchorse)  
+[![YouTube](http://i.imgur.com/yA4qam9.png)](https://www.youtube.com/channel/UCWVDjAcecHHa8UrEWMRGI8w) [![Discord](http://i.imgur.com/gI6JEpJ.png)](https://discord.gg/qfxrqUF) [![Twitter](http://i.imgur.com/6b8vHcX.png)](https://twitter.com/McHorsy) [![GitHub](http://i.imgur.com/DmTn1f1.png)](https://github.com/mchorse) 
+
+Also, I would really appreciate if you will support me on Patreon!
+
+[![Become my Patron](https://i.imgur.com/4pQZ2xW.png)](https://www.patreon.com/McHorse) 
 
 ## Bug reports
 
