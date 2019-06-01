@@ -4,8 +4,13 @@ import java.text.DecimalFormat;
 
 import mchorse.mclib.math.MathBuilder;
 import mchorse.mclib.math.Variable;
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ICommandSender;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Command handler
@@ -51,6 +56,13 @@ public class CommandHandler
         }
     }
 
+    /**
+     * This handler is responsible for processing commands. It does two 
+     * things: 
+     * 
+     * 1. Evaluates expressions via @{} tags
+     * 2. Breaks down multiple commands into separate in between || symbols
+     */
     @SubscribeEvent
     public void onCommand(CommandEvent event)
     {
@@ -61,10 +73,58 @@ public class CommandHandler
 
         String command = String.join(" ", event.getParameters());
 
-        if (command.contains("@{"))
+        if (command.contains("||"))
         {
+            /* Handle multiple commands */
+            ICommandSender sender = event.getSender();
+            boolean remote = sender.getEntityWorld().isRemote;
+            String[] commands = command.split("\\|\\|");
+
+            commands[0] = event.getCommand().getCommandName() + " " + commands[0];
+
+            if (remote)
+            {
+                this.executeClient(commands, sender);
+            }
+            else
+            {
+                this.executeCommands(commands, sender, sender.getServer().commandManager);
+            }
+
+            event.setCanceled(true);
+        }
+        else if (command.contains("@{"))
+        {
+            /* Handle substitution */
             command = this.rewriter.rewrite(command);
             event.setParameters(command.split(" "));
+        }
+    }
+
+    /**
+     * Client side only command execution 
+     */
+    @SideOnly(Side.CLIENT)
+    private void executeClient(String[] commands, ICommandSender sender)
+    {
+        this.executeCommands(commands, sender, ClientCommandHandler.instance);
+    }
+
+    /**
+     * Execute commands with given sender and command manager
+     */
+    private void executeCommands(String[] commands, ICommandSender sender, ICommandManager handler)
+    {
+        for (String command : commands)
+        {
+            command = command.trim();
+
+            if (command.isEmpty())
+            {
+                continue;
+            }
+
+            handler.executeCommand(sender, command);
         }
     }
 
