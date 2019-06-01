@@ -11,13 +11,13 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
  * 
  * This mod provides a new command called /forin
  */
-@Mod(modid = Commander.MODID, name = Commander.MODNAME, version = Commander.VERSION, updateJSON = "https://raw.githubusercontent.com/mchorse/commander/master/version.json")
+@Mod(modid = Commander.MODID, name = Commander.MODNAME, version = Commander.VERSION, dependencies = "required-after:mclib@[%MCLIB%,)", updateJSON = "https://raw.githubusercontent.com/mchorse/commander/master/version.json")
 public class Commander
 {
     /* Mod info */
     public static final String MODID = "commander";
     public static final String MODNAME = "Commander";
-    public static final String VERSION = "@VERSION@";
+    public static final String VERSION = "%VERSION%";
 
     /* Forge stuff */
     @Mod.Instance
