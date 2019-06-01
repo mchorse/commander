@@ -2,8 +2,8 @@ package mchorse.commander;
 
 import java.text.DecimalFormat;
 
-import mchorse.commander.math.MathBuilder;
-import mchorse.commander.math.Variable;
+import mchorse.mclib.math.MathBuilder;
+import mchorse.mclib.math.Variable;
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
