@@ -20,6 +20,6 @@ public class ClientProxy extends CommonProxy
 	{
 		super.preLoad(event);
 
-		ClientCommandHandler.instance.registerCommand(new CommandForinс());
+		ClientCommandHandler.instance.registerCommand(new CommandForinc());
 	}
 }
