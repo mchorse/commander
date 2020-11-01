@@ -20,10 +20,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class CommandHandler
 {
+    public static final CommandHandler instance = new CommandHandler();
+
     public MathBuilder maths;
     public Rewriter rewriter;
 
-    public CommandHandler()
+    private CommandHandler()
     {
         this.clearVariables();
     }
@@ -48,7 +50,7 @@ public class CommandHandler
         }
     }
 
-    public void unsetVariable(String... string)
+    public void unsetVariables(String... string)
     {
         for (String s : string)
         {
@@ -66,7 +68,7 @@ public class CommandHandler
     @SubscribeEvent
     public void onCommand(CommandEvent event)
     {
-        if (event.getCommand() instanceof CommandForin)
+        if (event.getCommand() instanceof CommandForin || event.getCommand() instanceof CommandForinс)
         {
             return;
         }

@@ -1,3 +1,4 @@
 #PARSE_ESCAPES
-commander.forin.help=/forin <start> <end> <command...>
+commander.forin.help=Executes multiple commands starting from <start> to <end> incrementing by one. <end> is inclusive.\n/forin <start> <end> <command...>
+commander.forinc.help=Just like /forin but for client side commands.\n/forin? <start> <end> <command...>
 commander.error.zero=<start> and <end> arguments can't be the same number

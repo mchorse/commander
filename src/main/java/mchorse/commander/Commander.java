@@ -1,8 +1,8 @@
 package mchorse.commander;
 
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
@@ -23,20 +23,19 @@ public class Commander
     @Mod.Instance
     public static Commander instance;
 
-    public static CommandHandler handler;
+    @SidedProxy(serverSide = "mchorse.commander.CommonProxy", clientSide = "mchorse.commander.ClientProxy")
+    public static CommonProxy proxy;
 
     @EventHandler
     public void preLoad(FMLPreInitializationEvent event)
     {
-        handler = new CommandHandler();
-
-        MinecraftForge.EVENT_BUS.register(handler);
+        proxy.preLoad(event);
     }
 
     @EventHandler
     public void startServer(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new CommandForin());
-        handler.clearVariables();
+        CommandHandler.instance.clearVariables();
     }
 }

@@ -55,7 +55,7 @@ public class CommandForin extends CommandBase
             throw new CommandException("commander.error.zero", start, end);
         }
 
-        CommandHandler handler = Commander.handler;
+        CommandHandler handler = CommandHandler.instance;
 
         handler.setVariable("x", sender.getPosition().getX());
         handler.setVariable("y", sender.getPosition().getY());
@@ -73,11 +73,16 @@ public class CommandForin extends CommandBase
         {
             handler.setVariable(index, start);
 
-            server.getCommandManager().executeCommand(sender, command);
+            this.executeNestedCommand(server, sender, command);
         }
 
         this.index--;
-        handler.unsetVariable(index, index + "_c", index + "_s", "x", "y", "z");
+        handler.unsetVariables(index, index + "_c", index + "_s", "x", "y", "z");
+    }
+
+    protected void executeNestedCommand(MinecraftServer server, ICommandSender sender, String command)
+    {
+        server.getCommandManager().executeCommand(sender, command);
     }
 
     /**
