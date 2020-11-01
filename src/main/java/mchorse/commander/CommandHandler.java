@@ -1,7 +1,5 @@
 package mchorse.commander;
 
-import java.text.DecimalFormat;
-
 import mchorse.mclib.math.MathBuilder;
 import mchorse.mclib.math.Variable;
 import net.minecraft.command.ICommandManager;
@@ -11,6 +9,8 @@ import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.text.DecimalFormat;
 
 /**
  * Command handler
@@ -68,7 +68,7 @@ public class CommandHandler
     @SubscribeEvent
     public void onCommand(CommandEvent event)
     {
-        if (event.getCommand() instanceof CommandForin || event.getCommand() instanceof CommandForinс)
+        if (event.getCommand() instanceof CommandForin || event.getCommand() instanceof CommandForinc)
         {
             return;
         }
