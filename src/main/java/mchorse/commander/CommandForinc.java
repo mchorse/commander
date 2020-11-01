@@ -3,7 +3,7 @@ package mchorse.commander;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 
-public class CommandForinс extends CommandForin
+public class CommandForinc extends CommandForin
 {
     public int index;
 
