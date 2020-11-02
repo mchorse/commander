@@ -25,6 +25,8 @@ public class CommandHandler
     public MathBuilder maths;
     public Rewriter rewriter;
 
+    private boolean executingClient;
+
     private CommandHandler()
     {
         this.clearVariables();
@@ -68,18 +70,25 @@ public class CommandHandler
     @SubscribeEvent
     public void onCommand(CommandEvent event)
     {
+        if (this.executingClient)
+        {
+            this.executingClient = false;
+
+            return;
+        }
+
         if (event.getCommand() instanceof CommandForin || event.getCommand() instanceof CommandForinc)
         {
             return;
         }
 
         String command = String.join(" ", event.getParameters());
+        ICommandSender sender = event.getSender();
+        boolean remote = sender.getEntityWorld().isRemote;
 
         if (command.contains("||"))
         {
             /* Handle multiple commands */
-            ICommandSender sender = event.getSender();
-            boolean remote = sender.getEntityWorld().isRemote;
             String[] commands = command.split("\\|\\|");
 
             commands[0] = event.getCommand().getName() + " " + commands[0];
@@ -99,7 +108,18 @@ public class CommandHandler
         {
             /* Handle substitution */
             command = this.rewriter.rewrite(command);
-            event.setParameters(command.split(" "));
+
+            if (remote)
+            {
+                this.executingClient = true;
+
+                event.setCanceled(true);
+                ClientCommandHandler.instance.executeCommand(sender, event.getCommand().getName() + " " + command);
+            }
+            else
+            {
+                event.setParameters(command.split(" "));
+            }
         }
     }
 
