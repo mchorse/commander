@@ -9,17 +9,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy
 {
-	@Override
-	public void executeClientCommand(ICommandSender sender, String command)
-	{
-		ClientCommandHandler.instance.executeCommand(sender, command);
-	}
+    @Override
+    public void executeClientCommand(ICommandSender sender, String command)
+    {
+        ClientCommandHandler.instance.executeCommand(sender, command);
+    }
 
-	@Override
-	public void preLoad(FMLPreInitializationEvent event)
-	{
-		super.preLoad(event);
+    @Override
+    public void preLoad(FMLPreInitializationEvent event)
+    {
+        super.preLoad(event);
 
-		ClientCommandHandler.instance.registerCommand(new CommandForinc());
-	}
+        ClientCommandHandler.instance.registerCommand(new CommandForinc());
+    }
 }

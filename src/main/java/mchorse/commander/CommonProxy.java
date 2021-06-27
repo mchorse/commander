@@ -6,11 +6,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy
 {
-	public void executeClientCommand(ICommandSender sender, String command)
-	{}
+    public void executeClientCommand(ICommandSender sender, String command)
+    {}
 
-	public void preLoad(FMLPreInitializationEvent event)
-	{
-		MinecraftForge.EVENT_BUS.register(CommandHandler.instance);
-	}
+    public void preLoad(FMLPreInitializationEvent event)
+    {
+        MinecraftForge.EVENT_BUS.register(CommandHandler.instance);
+    }
 }

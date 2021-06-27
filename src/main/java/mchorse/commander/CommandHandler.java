@@ -1,7 +1,9 @@
 package mchorse.commander;
 
+import mchorse.mclib.math.IValue;
 import mchorse.mclib.math.MathBuilder;
 import mchorse.mclib.math.Variable;
+import mchorse.mclib.utils.Rewriter;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ICommandSender;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -40,7 +42,7 @@ public class CommandHandler
 
     public void setVariable(String string, double value)
     {
-        Variable var = (Variable) this.maths.variables.get(string);
+        Variable var = this.maths.variables.get(string);
 
         if (var == null)
         {
@@ -86,10 +88,10 @@ public class CommandHandler
         ICommandSender sender = event.getSender();
         boolean remote = sender.getEntityWorld().isRemote;
 
-        if (command.contains("||"))
+        if (command.contains(" || "))
         {
             /* Handle multiple commands */
-            String[] commands = command.split("\\|\\|");
+            String[] commands = command.split(" \\|\\| ");
 
             commands[0] = event.getCommand().getName() + " " + commands[0];
 
@@ -172,7 +174,9 @@ public class CommandHandler
         {
             try
             {
-                return this.formater.format(this.builder.parse(group(1)).get());
+                IValue value = this.builder.parse(group(1)).get();
+
+                return value.isNumber() ? this.formater.format(value.doubleValue()) : value.stringValue();
             }
             catch (Exception e)
             {

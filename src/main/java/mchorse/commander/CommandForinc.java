@@ -5,8 +5,6 @@ import net.minecraft.server.MinecraftServer;
 
 public class CommandForinc extends CommandForin
 {
-    public int index;
-
     @Override
     public String getName()
     {
